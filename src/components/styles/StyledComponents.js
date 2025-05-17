@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import { createGlobalStyle, styled } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -39,10 +46,12 @@ export const HourlyForecastWrapper = styled.div`
 export const HourlyItem = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 20px;
   align-items: center;
   color: white;
   padding: 10px;
   min-width: 100px;
+  white-space: nowrap;
 `;
 
 export const DailyForecastWrapper = styled.div`

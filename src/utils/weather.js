@@ -21,12 +21,34 @@ export const getWeatherDescription = (code) => {
 
 export const formatHourlyData = (weatherData) => {
   if (!weatherData) return [];
-  // 밑에 코드 채워주세요
-  return [];
+  // 객체 리스트 12시간단위로 뽑아서 리턴
+
+  const hourlyDataList= [];
+  for (let i = 0; i <= 12; i ++) {
+    const item = {
+      time: weatherData.hourly.time[i],                // "2025-05-18T01:00" 슬라이싱?
+      temperature: weatherData.hourly.temperature_2m[i],
+      code: weatherData.hourly.weather_code[i],
+    };
+    hourlyDataList.push(item);
+  }
+  
+  return hourlyDataList;
 };
 
 export const formatDailyData = (weatherData) => {
   if (!weatherData) return [];
-  // 밑에 코드 채워주세요
-  return [];
+  
+  const dailyDataList = [];
+  const dailyData = weatherData.daily;
+  for (let i = 0; i <= 6; i ++) {
+    const item = {
+      time: dailyData.time[i], // 얘도 슬라이싱
+      temperature: dailyData.temperature_2m_max[i],
+      code: dailyData.weather_code[i],
+    };
+    dailyDataList.push(item);
+  }
+
+  return dailyDataList;
 };

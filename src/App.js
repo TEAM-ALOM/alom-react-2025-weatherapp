@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./components/styles/StyledComponents";
+import { Container, GlobalStyle } from "./components/styles/StyledComponents";
 import CurrentWeather from "./components/CurrentWeather";
 import HourlyForecast from "./components/HourlyForecast";
 import DailyForecast from "./components/DailyForecast";
@@ -25,15 +25,18 @@ function App() {
   }, []);
 
   return (
-    <Container>
-      <CurrentWeather weatherData={weatherData} isLoading={isLoading} />
-      {!isLoading && weatherData && (
-        <>
-          <HourlyForecast weatherData={weatherData} />
-          <DailyForecast weatherData={weatherData} />
-        </>
-      )}
-    </Container>
+    <>
+      <GlobalStyle />
+      <Container>
+        <CurrentWeather weatherData={weatherData} isLoading={isLoading} />
+        {!isLoading && weatherData && (
+          <>
+            <HourlyForecast weatherData={weatherData} />
+            <DailyForecast weatherData={weatherData} />
+          </>
+        )}
+      </Container>
+    </>
   );
 }
 
