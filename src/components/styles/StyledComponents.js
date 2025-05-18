@@ -28,7 +28,7 @@ export const WeatherCode = styled.p`
 export const HourlyForecastWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
   overflow-x: auto;
   padding: 20px;
   background: rgba(255, 255, 255, 0.2);
@@ -43,6 +43,8 @@ export const HourlyItem = styled.div`
   color: white;
   padding: 10px;
   min-width: 100px;
+  gap: 15px;
+  white-space:nowrap;
 `;
 
 export const DailyForecastWrapper = styled.div`

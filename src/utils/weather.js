@@ -21,12 +21,44 @@ export const getWeatherDescription = (code) => {
 
 export const formatHourlyData = (weatherData) => {
   if (!weatherData) return [];
-  // 밑에 코드 채워주세요
-  return [];
+  
+  
+  const {time,temperature_2m,weather_code} = weatherData.hourly;
+
+  const result = [];
+
+  for(let i = 0; i < 24; i++) {
+    const date = new Date(time[i]);
+    const hour = date.getHours().toString().padStart(2, "0");
+    
+    result.push({
+      time: hour,
+      temp: Math.round(temperature_2m[i]),
+      code: weather_code[i],
+    });
+  }
+
+  return result;
 };
 
 export const formatDailyData = (weatherData) => {
   if (!weatherData) return [];
-  // 밑에 코드 채워주세요
-  return [];
+  
+  const {time,temperature_2m_max,weather_code} = weatherData.daily;
+
+  return time.map((datestr,i)=>{
+    const date = new Date(datestr);
+    const day = date.toLocaleDateString("ko-KR",{
+      month: "2-digit",
+      day: "2-digit",
+      weekday: "short",
+    });
+
+    return{
+      date:day,
+      temp:Math.round(temperature_2m_max[i]),
+      code: weather_code[i],
+    };
+  });
+  
 };
