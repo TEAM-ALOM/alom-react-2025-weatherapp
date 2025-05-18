@@ -22,11 +22,26 @@ export const getWeatherDescription = (code) => {
 export const formatHourlyData = (weatherData) => {
   if (!weatherData) return [];
   // 밑에 코드 채워주세요
-  return [];
+  const {time,temperature_2m,weather_code} = weatherData.hourly;
+
+  const times24   = time.slice(0, 24)
+  const temps24   = temperature_2m.slice(0, 24)
+  const codes24   = weather_code.slice(0, 24)
+
+  return times24.map((t,i)=>({
+    time : t.slice(11,13) % 24,
+    temp: temps24[i],
+    description : getWeatherDescription(codes24[i])
+  }));
 };
 
 export const formatDailyData = (weatherData) => {
   if (!weatherData) return [];
   // 밑에 코드 채워주세요
-  return [];
+  const {time,temperature_2m_max,weather_code} = weatherData.daily;
+  return time.map((d,i) => ({
+    date:d,
+    maxTemp : temperature_2m_max[i],
+    description : getWeatherDescription(weather_code[i])
+  }));
 };

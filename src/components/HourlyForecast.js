@@ -5,7 +5,18 @@ import { getWeatherDescription, formatHourlyData } from "../utils/weather";
 const HourlyForecast = ({ weatherData }) => {
   const hourlyData = formatHourlyData(weatherData);
 
-  return <div>채워주세요</div>;
+  return (
+    <HourlyForecastWrapper>
+        {hourlyData.map(item => (
+          <HourlyItem key={item.time}>
+            <p>{item.time}시</p>
+            <p>{item.temp}°C</p>
+            <p style={{ margin: 0 }}>{item.description}</p>
+          </HourlyItem>
+          
+        ))}
+      </HourlyForecastWrapper>
+      );
 };
 
 export default HourlyForecast;
