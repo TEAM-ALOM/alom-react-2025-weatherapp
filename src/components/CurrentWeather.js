@@ -1,17 +1,18 @@
 import React from "react";
-import {
-  CurrentWeatherWrapper,
-  Temperature,
-  WeatherCode,
-} from "./styles/StyledComponents";
+import { CenterText, TempText, DescText } from "./styles/StyledComponents";
 import { getWeatherDescription } from "../utils/weather";
 
-const CurrentWeather = ({ weatherData, isLoading }) => {
-  if (isLoading) {
-    return <div>채워주세요</div>;
-  }
+const CurrentWeather = ({ weatherData }) => {
+  const currentTemp = weatherData.hourly.temperature_2m[0];
+  const currentCode = weatherData.hourly.weather_code[0];
+  const description = getWeatherDescription(currentCode);
 
-  return <div>채워주세요</div>;
+  return (
+    <CenterText>
+      <TempText>{currentTemp}°C</TempText>
+      <DescText>{description}</DescText>
+    </CenterText>
+  );
 };
 
 export default CurrentWeather;

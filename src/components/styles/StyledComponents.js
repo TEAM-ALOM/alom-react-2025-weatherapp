@@ -1,69 +1,55 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
+  background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
   min-height: 100vh;
-  background: linear-gradient(to bottom, #87ceeb, #4682b4);
-  padding: 20px;
+  padding: 40px 20px;
+  color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
 `;
 
-export const CurrentWeatherWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  color: white;
+export const CenterText = styled.div`
+  text-align: center;
+  margin-bottom: 50px;
 `;
 
-export const Temperature = styled.h1`
-  font-size: 4rem;
+export const TempText = styled.h1`
+  font-size: 56px;
   margin: 0;
 `;
 
-export const WeatherCode = styled.p`
-  font-size: 1.5rem;
-  margin: 10px 0;
+export const DescText = styled.p`
+  font-size: 24px;
+  margin: 8px 0 0;
 `;
 
-export const HourlyForecastWrapper = styled.div`
+export const HourlyCard = styled.div`
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 auto 40px;
+  max-width: 768px;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  overflow-x: auto;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+`;
+
+export const ForecastItem = styled.div`
+  flex: 1;
+`;
+
+export const DailyCard = styled.div`
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  margin-top: auto;
-`;
-
-export const HourlyItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  padding: 10px;
-  min-width: 100px;
-`;
-
-export const DailyForecastWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  margin-top: 20px;
-`;
-
-export const DailyItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  padding: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
-  &:last-child {
-    border-bottom: none;
-  }
+  margin: 0 auto;
+  max-width: 768px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 16px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
 `;
