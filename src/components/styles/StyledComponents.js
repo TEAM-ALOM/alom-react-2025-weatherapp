@@ -34,6 +34,19 @@ export const HourlyForecastWrapper = styled.div`
   background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   margin-top: auto;
+
+  &::-webkit-scrollbar {
+    height: 6px; /* 스크롤바 두께 */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4); /* 손잡이 색상 */
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6); /* 호버 시 색상 */
+  }
 `;
 
 export const HourlyItem = styled.div`
@@ -43,6 +56,8 @@ export const HourlyItem = styled.div`
   color: white;
   padding: 10px;
   min-width: 100px;
+  font-size: 0.9rem;
+  gap: 10px;
 `;
 
 export const DailyForecastWrapper = styled.div`
