@@ -22,11 +22,41 @@ export const getWeatherDescription = (code) => {
 export const formatHourlyData = (weatherData) => {
   if (!weatherData) return [];
   // 밑에 코드 채워주세요
-  return [];
+  const { time, temperature_2m, weather_code } = weatherData.hourly;
+
+  /*
+  - `latitude`, `longitude`: 서울 좌표 (37.566°N, 126.9784°E)
+- `hourly`: 시간별 날씨 데이터 포함:
+  - `temperature_2m`: 섭씨 온도
+  - `weather_code`: 날씨 상태 코드
+- `daily`: 일별 날씨 데이터 포함:
+  - `weather_code`: 일별 날씨 상태 코드
+  - `temperature_2m_max`: 일 최고 기온
+- `timezone`: Asia/Tokyo
+- `forecast_days`: 7일 예보
+*/
+
+ return time.slice(0, 12).map((t, i) => ({
+    time: new Date(t).toLocaleTimeString("ko-KR", { hour: "2-digit" , hour12: true }), 
+    temperature: temperature_2m[i], // 온도
+    weather: getWeatherDescription(weather_code[i]), // 날씨 설명
+  }));
+  
 };
 
 export const formatDailyData = (weatherData) => {
   if (!weatherData) return [];
   // 밑에 코드 채워주세요
-  return [];
+  
+  const { time, temperature_2m_max, weather_code } = weatherData.daily;
+
+  return time.slice(0, 7).map((t, i) => ({
+    date: new Date(t).toLocaleDateString("ko-KR", {
+      month: "long",
+      day: "numeric",
+      weekday: "short",
+    }),
+    weather: getWeatherDescription(weather_code[i]), 
+    temperature: temperature_2m_max[i],
+  }));
 };
