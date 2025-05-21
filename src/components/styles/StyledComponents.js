@@ -43,7 +43,17 @@ export const HourlyItem = styled.div`
   color: white;
   padding: 10px;
   min-width: 100px;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
 `;
+
+
+
 
 export const DailyForecastWrapper = styled.div`
   display: flex;
@@ -61,9 +71,14 @@ export const DailyItem = styled.div`
   align-items: center;
   color: white;
   padding: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-  &:last-child {
-    border-bottom: none;
-  }
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
 `;
+
+
+
