@@ -21,12 +21,39 @@ export const getWeatherDescription = (code) => {
 
 export const formatHourlyData = (weatherData) => {
   if (!weatherData) return [];
-  // 밑에 코드 채워주세요
-  return [];
+
+  const times = weatherData.hourly.time.slice(0, 24); // 24시간 분량 시간 배열
+  const temperatures = weatherData.hourly.temperature_2m.slice(0, 24);
+  const weatherCodes = weatherData.hourly.weather_code.slice(0, 24);
+
+  // 시간 문자열 예시: "2025-05-26T15:30"
+  const result = times.map((datetime, idx) => {
+    const [date, time] = datetime.split('T');
+    const timeHHmm = time ? time.substring(0, 5) : "";
+
+    return {
+      date,                // "YYYY-MM-DD"
+      time: timeHHmm,      // "HH:mm"
+      temperature: temperatures[idx],
+      weather_code: weatherCodes[idx]
+    };
+  });
+
+  return result;
 };
 
 export const formatDailyData = (weatherData) => {
   if (!weatherData) return [];
-  // 밑에 코드 채워주세요
-  return [];
+
+  const dates = weatherData.daily.time;
+  const weatherCodes = weatherData.daily.weather_code;
+  const tempsMax = weatherData.daily.temperature_2m_max;
+
+  const result = dates.map((dateStr, idx) => ({
+    date: dateStr,                 // ISO 8601 형식 날짜 문자열 그대로
+    weather_code: weatherCodes[idx],
+    temperature_max: tempsMax[idx]
+  }));
+
+  return result;
 };
