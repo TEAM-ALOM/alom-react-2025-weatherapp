@@ -15,6 +15,7 @@ function App() {
     fetch(API_URL)
       .then((response) => response.json())
       .then((data) => {
+        //console.log(data);
         setWeatherData(data);
         setIsLoading(false);
       })
@@ -27,9 +28,11 @@ function App() {
   return (
     <Container>
       <CurrentWeather weatherData={weatherData} isLoading={isLoading} />
+      <hr></hr>
       {!isLoading && weatherData && (
         <>
           <HourlyForecast weatherData={weatherData} />
+          <hr></hr>
           <DailyForecast weatherData={weatherData} />
         </>
       )}
